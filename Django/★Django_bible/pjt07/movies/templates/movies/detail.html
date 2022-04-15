@@ -1,0 +1,52 @@
+{% extends 'BASE.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+<h1>DETAIL</h1>
+<hr>
+<p>영화제목 : {{ movie.title }}</p>
+<hr>
+<p>내용 : {{ movie.description }}</p>
+{% if request.user == movie.user %}
+  <a href="{% url 'movies:update' movie.pk %}">
+    <button type="submit">UPDATE</button>
+  </a>
+
+  <form action="{% url 'movies:delete' movie.pk %}" method="POST">
+    {% csrf_token %}
+    <button type="submit">DELETE</button>
+  </form>
+{% endif %}
+
+<a href="{% url 'movies:index' %}">
+  <button type="submit">BACK</button>
+</a>
+<hr>
+
+<h4>댓글 목록</h4>
+<ul>
+  {% for comment in movie.comment_set.all %}
+    <li>
+      {{ comment.user }} : {{ comment.content }}
+      {% if request.user == comment.user %}
+        <form action="{% url 'movies:comments_delete' movie.pk comment.pk %}" method="POST">
+          {% csrf_token %}
+          <button type="submit">DELETE</button>
+        </form>
+      {% endif %}
+    </li>
+  {% endfor %}
+</ul>
+<hr>
+{% if request.user.is_authenticated %}
+  <form action="{% url 'movies:comments_create' movie.pk %}" method="POST">
+    {% csrf_token %}
+    {% bootstrap_form comment_form %}
+    <button type="submit">댓글 작성</button>
+  </form>
+{% else %}
+  <a href="{% url 'accounts:login' %}">[로그인하면 댓글가능]</a>
+{% endif %}
+
+
+{% endblock content %}
