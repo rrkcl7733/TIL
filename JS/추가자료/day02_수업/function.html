@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 50px;
+      /* background-color: gold; */
+    }
+  </style>
+</head>
+<body>
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script>
+    const lottoNumbers = _.sampleSize(_.range(1, 46), 6).sort((a, b)=> a - b)
+    const h1 = document.createElement('h1')
+    h1.innerText = '로또 추첨기'
+    document.body.appendChild(h1)
+    // lottoNumbers를 반복해서 계속 element 추가하면 어떨까?
+    lottoNumbers.forEach(number => {
+      const div = document.createElement('div')
+      div.innerText = number
+      div.classList.add('ball')
+      div.style.backgroundColor = 'gold'
+      document.body.appendChild(div)
+      console.log(number)
+    })
+  </script>  
+  <script>
+    const materials = [
+    'Hydrogen',
+    'Helium',
+    'Lithium',
+    'Beryllium'
+  ]
+  
+    console.log(materials.map(material => material.length))
+  
+    console.log(materials.map(material => {
+      return material.length
+    }))
+    // expected output: Array [8, 6, 7, 9]
+  
+    console.log(materials.map(function (material) {
+      return material.length
+    }))
+  
+    // IIFE 패턴
+    // (function() {
+    //     // statements
+    // })();
+  </script>
+</body>
+</html>
