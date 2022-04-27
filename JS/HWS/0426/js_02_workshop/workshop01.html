@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
@@ -13,7 +13,20 @@
   <script>
     // 주어진 문자열이 회문인지 판별하는 isPalindrome 함수를 완성하시오.
     function isPalindrome(str) {
+      const noSpaceStr = str.replaceAll(' ', '')
 
+      const arr = noSpaceStr.split('')
+      arr.reverse()
+      /* 
+        join을 사용해 문자열로 바꾸지 않고 
+        arr 과 arr.reverse()를 비교하면 같은 arr을 참조함.
+        
+          const a = [1, 2]
+          a === a.reverse()  //true
+      */
+      const reversedStr = arr.join('')
+
+      return noSpaceStr === reversedStr
     }
 
     // 출력
