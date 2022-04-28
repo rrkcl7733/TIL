@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
   <meta charset="UTF-8">
@@ -24,7 +24,10 @@
         2) a 태그의 href 속성은 https://google.com/ 입니다.
         3) a 태그의 target 속성은 _blank 입니다. (새 탭에서 열기)
     */
-
+    const aa = document.querySelector('#anchor')
+    aa.setAttribute('class', 'text-decoration-none')
+    aa.setAttribute('href', 'https://google.com/')
+    aa.setAttribute('target', '_blank')
   </script>
 </body>
 
