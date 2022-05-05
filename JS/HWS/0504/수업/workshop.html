@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .ball-list {
+      display: block;
+    }
+    .ball {
+      display: inline-block;
+      width: 100px;
+      height: 100px;
+      line-height: 100px;
+      text-align: center;
+      font-size: 32px;
+      font-weight: bold;
+      border-radius: 50px;
+      background-color: gold;
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="menu in menus">{{ menu }}</li>
+    </ul>
+    <!-- 버튼을 만들고, 이벤트를 걸고, 메서드를 정의하고 -->
+    <button @click="selectMenu">고르기</button>
+    <h2>{{ menu }}</h2>
+    <hr>
+    <button @click="selectLotto">로또</button>
+    <h2 v-if="numbers.length">{{ numbers }}</h2>
+    <div v-for="number in numbers" class="ball">{{ number }}</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: '#app',
+      data: {
+        menus: ['국밥', '마라탕', '햄버거', '다이어트', '해장국'],
+        menu: '',
+        numbers: []
+      },
+      methods: {
+        selectMenu() {
+          this.menu = _.sample(this.menus)
+        },
+        selectLotto() {
+          this.numbers = _.sampleSize(_.range(1, 46), 6).sort()
+        }
+      }
+    })
+
+
+  </script>
+</body>
+</html>
