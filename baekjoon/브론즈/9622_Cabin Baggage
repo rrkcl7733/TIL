@@ -1,0 +1,9 @@
+x = 0
+for _ in range(int(input())):
+    a, b, c, d = map(float, input().split())
+    if d <= 7 and ((a <= 56 and b <= 45 and c <= 25) or a + b + c <= 125):
+        print(1)
+        x += 1
+    else:
+        print(0)
+print(x)
