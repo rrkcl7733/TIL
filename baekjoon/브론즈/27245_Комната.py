@@ -1,0 +1,5 @@
+w = int(input())
+l = int(input())
+h = int(input())
+a, b = min(w, l), max(w, l)
+print('good' if a / h >= 2 and b / a <= 2 else 'bad')
