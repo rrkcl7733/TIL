@@ -1,0 +1,5 @@
+n, t = map(int, input().split())
+m = int(input())
+x, y = map(int, input().split())
+r = m / (60 * x) + (n - m) / (60 * y)
+print(int(r - t + 1) if r > t else 0)
