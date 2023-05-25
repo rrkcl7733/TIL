@@ -1,0 +1,9 @@
+n = int(input())
+m = int(input())
+t = m
+print(n, m, sep='\n')
+i = 10
+while m:
+    print(m % i * n)
+    m //= i
+print(n * t)
