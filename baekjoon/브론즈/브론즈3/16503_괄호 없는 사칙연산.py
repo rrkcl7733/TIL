@@ -1,0 +1,5 @@
+a, o1, b, o2, c = input().split()
+t1 = int(eval(str(int(eval(a + o1 + b))) + o2 + c))
+t2 = int(eval(a + o1 + str(int(eval(b + o2 + c)))))
+print(min(t1, t2))
+print(max(t1, t2))
