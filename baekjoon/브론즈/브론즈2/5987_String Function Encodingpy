@@ -1,0 +1,8 @@
+for _ in range(int(input())):
+    N, C, S = input().split()
+    N, C = int(N), int(C)
+
+    for _ in range(C):
+        S = S[N:] + S
+
+    print(S)
